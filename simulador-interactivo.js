@@ -1,52 +1,7 @@
-// //presentación del algoritmo 1
-// alert("Atención, va a comenzar el algoritmo N°1" + "\n" + "Explicación: El usuario deberá ingresar palabras y, cuando decida finalizar, el algoritmo mostrará todas las palabras ingresadas con su orden correspondiente.")
-//     //declaración e inicialización de variables a utilizar en algoritmo 1
-// let contadorCantidadPalabras = 0
-// let acumuladorCadenaResultado = "Ingresos del usuario:"
-//     //comienzo del algoritmo
-// let ingresoUsuario = prompt("Ingrese una palabra por favor (Escriba 'FIN' para finalizar)")
-// while (ingresoUsuario.toUpperCase() != "FIN") {
-//     contadorCantidadPalabras = contadorCantidadPalabras + 1
-//     if (ingresoUsuario == "") {
-//         ingresoUsuario = "El usuario no ingresó nada en esta iteración"
-//     }
-//     const CADENA_ACTUAL = "\n" + "Ingreso N° " + contadorCantidadPalabras + ": " + ingresoUsuario
-//     acumuladorCadenaResultado = acumuladorCadenaResultado + CADENA_ACTUAL
-//     ingresoUsuario = prompt("Ingrese una palabra por favor (Escriba 'FIN' para finalizar)")
-// }
-// if (contadorCantidadPalabras > 0) {
-//     alert(acumuladorCadenaResultado)
-// } else {
-//     alert("El usuario no ingresó nada")
-// }
-
-
-// //presentación del algoritmo 2
-// alert("Atención, va a comenzar el algoritmo N°2" + "\n" + "Explicación: El usuario deberá ingresar, en primer lugar, cuantas iteraciones quiere hacer del algoritmo. En cada iteración, el usuario deberá ingresar dos números que se sumaran, y luego un tercer número que se comparará con la suma de los otros dos.")
-//     //comienzo del algoritmo
-// const NUMERO_REPETICIONES = parseInt(prompt("Ingresá el número de iteraciones que va a realizar el algoritmo"))
-// for (let i = 1; i <= NUMERO_REPETICIONES; i++) {
-//     const NUMERO_UNO = parseInt(prompt("Ingresá el primer numero a sumar"))
-//     const NUMERO_DOS = parseInt(prompt("Ingresá el segundo numero a sumar"))
-//     const SUMA_NUMEROS = NUMERO_UNO + NUMERO_DOS
-//     const NUMERO_TRES = parseInt(prompt("Ingresá el numero contra el que se va a comparar la suma de los dos anteriores"))
-//     let resultadoComparacion = ""
-//     if (SUMA_NUMEROS > NUMERO_TRES) {
-//         resultadoComparacion = "mayor"
-//     } else if (SUMA_NUMEROS == NUMERO_TRES) {
-//         resultadoComparacion = "igual"
-//     } else if (SUMA_NUMEROS < NUMERO_TRES) {
-//         resultadoComparacion = "menor"
-//     }
-//     const RESULTADO_FINAL_ITERACION = "Iteración N°: " + i + "\n" + "Primer número ingresado :" + NUMERO_UNO + "\n" + "Segundo número ingresado:" + NUMERO_DOS + "\n" + "Suma de los numeros ingresados: " + SUMA_NUMEROS + "\n" + "Tercer número ingresado: " + NUMERO_TRES + "\n" + "Resultado: La suma de los dos primeros números ingresados es " + resultadoComparacion + " que el tercer número ingresado por el usuario"
-//     alert(RESULTADO_FINAL_ITERACION)
-// }
-
-
 //Inicio de código - Simulador Interactivo
 //0 - Explicación del algoritmo: Simulará a un ecommerce, interactuando con el usuario a través de 'alerts' y de 'prompts'. El ecommerce será de imanes y llaveros de fútbol de los 5 equipos denominados "grandes" del fútbol argentino. El usuario deberá elegir, por iteración y hasta que quiera salir del programa, el tipo de accesorio que va a llevar y de qué equipo. Finalmente, elegirá las cuotas en las que quiere pagar y el sistema calculará cuanto deberá pagar por mes.
 //1 - Declaración e inicialización de variables a utilizar
-//1.a - contador de productos a llevar
+//1.a - variables vinculadas con: (i) cantidad de productos a llevar por tipo (llavero/iman) y equipo + subtotales de la compra + constantes necesarias para el cálculo del valor final de la compra (precios unitarios por llavero e iman + porcentaje de aumento seleccionando las distintas cuotas ofrecidas)
 let llaverosCASLA = 0
 let imanesCASLA = 0
 let llaverosCABJ = 0
@@ -194,7 +149,8 @@ if (usuarioCompro()) {
     const VALOR_FINAL_A_PAGAR = calcularValorFinal(subtotal, cuotasElegidas)
     const VALOR_FINAL_POR_CUOTA = calcularValorPorCuota(VALOR_FINAL_A_PAGAR, cuotasElegidas)
     alert("Pedido realizado con éxito. Usted pagará un total de $" + VALOR_FINAL_A_PAGAR + " en " + cuotasElegidas + " cuotas, y tendrá que abonar un total de $" + VALOR_FINAL_POR_CUOTA + " por cuota.")
-    alert(NOMBRECLIENTE + ", muchas gracias por su compra. Su pedido será despachado en las próximas semanas. En breve le llegará el link de seguimiento.")
+    consultarDatosEnvioUsuario()
+    alert(NOMBRECLIENTE + "(Doc. N° " + dniUsuario + "), muchas gracias por su compra. Su pedido será despachado en las próximas semanas a la dirección '" + direccionUsuario + "'. En breve le llegará el link de seguimiento.")
 } else {
     alert("Usted no compró nada, hasta luego!")
 }
